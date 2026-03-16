@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGreen Dashboard 2025 - บูรณาการนวัตกรรมและสิทธิประโยชน์</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Sarabun', sans-serif; background-color: #0f172a; color: #e2e8f0; scroll-behavior: smooth; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .text-neon-green { color: #4ade80; text-shadow: 0 0 10px rgba(74, 222, 128, 0.3); }
+        .bg-neon-green { background-color: #22c55e; box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
+        .sidebar-link.active { background: rgba(34, 197, 94, 0.15); color: #4ade80; border-right: 4px solid #4ade80; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        canvas { max-width: 100% !important; }
+        .input-glass { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.1); color: white; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col md:flex-row">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-full md:w-64 glass border-r border-slate-800 flex-shrink-0 z-50">
+        <div class="p-6">
+            <div class="flex items-center space-x-3 mb-10">
+                <div class="w-10 h-10 bg-neon-green rounded-xl flex items-center justify-center text-white font-black shadow-lg">TG</div>
+                <div>
+                    <span class="text-white font-bold block leading-tight">TechGreen DashBoard</span>
+                    <span class="text-[10px] text-green-400 font-bold uppercase tracking-widest">Create By "Sorasak"</span>
+                </div>
+            </div>
+            
+            <nav class="space-y-2">
+                <!-- เพิ่ม ID ให้ปุ่มเพื่อให้ฟังก์ชัน switchTab ทำงานได้ถูกต้อง -->
+                <button onclick="switchTab('overview')" id="btn-overview" class="sidebar-link active w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition text-left">
+                    <span>📊</span> <span>ภาพรวมระบบ</span>
+                </button>
+                <button onclick="switchTab('business')" id="btn-business" class="sidebar-link w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition text-left">
+                    <span>💼</span> <span>สำหรับธุรกิจ (ESG)</span>
+                </button>
+                <button onclick="switchTab('calculator')" id="btn-calculator" class="sidebar-link w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition text-left">
+                    <span>🧮</span> <span>เครื่องมือคำนวณภาษี</span>
+                </button>
+                <button onclick="switchTab('community')" id="btn-community" class="sidebar-link w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition text-left">
+                    <span>🏘️</span> <span>ชุมชนและนวัตกรรม</span>
+                </button>
+                <button onclick="switchTab('regulations')" id="btn-regulations" class="sidebar-link w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition text-left">
+                    <span>📜</span> <span>ระเบียบใหม่ 2568</span>
+                </button>
+            </nav>
+        </div>
+        
+        <div class="mt-auto p-6 border-t border-slate-800">
+            <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                <p class="text-[10px] uppercase font-bold text-slate-500 mb-2">Help Desk</p>
+                <p class="text-xs mb-3 text-slate-300">ปรึกษาการจ้างงาน/ม.35</p>
+                <a href="tel:1479" class="block text-center bg-white/5 hover:bg-white/10 py-2 rounded-lg text-xs font-bold transition border border-white/10">โทรสายด่วน 1479</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow p-4 md:p-8 overflow-y-auto">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+            <div>
+                <h1 id="page-title" class="text-2xl font-bold text-white mb-1">ภาพรวมการพัฒนาคุณภาพชีวิต</h1>
+                <p class="text-sm text-slate-400 italic">อ้างอิงประกาศกระทรวง พม. ฉบับล่าสุด 2568</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="glass px-4 py-2 rounded-full text-xs font-bold border-green-500/20 text-green-400 flex items-center">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                    ฐานข้อมูลออนไลน์เชื่อมต่อแล้ว
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: Overview -->
+        <section id="tab-overview" class="tab-content active space-y-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass p-6 rounded-3xl border-l-4 border-green-500">
+                    <p class="text-xs font-bold text-slate-500 uppercase mb-2">คนพิการเข้าถึงสิทธิ์</p>
+                    <h3 class="text-2xl font-black text-white">2.1M+</h3>
+                    <p class="text-[10px] text-green-400 mt-1">↑ 2.4% จากเกณฑ์ใหม่</p>
+                </div>
+                <div class="glass p-6 rounded-3xl border-l-4 border-blue-500">
+                    <p class="text-xs font-bold text-slate-500 uppercase mb-2">เป้าหมายจ้างงาน 68</p>
+                    <h3 class="text-2xl font-black text-white">65,400</h3>
+                    <p class="text-[10px] text-blue-400 mt-1">ม.33 และ ม.35</p>
+                </div>
+                <div class="glass p-6 rounded-3xl border-l-4 border-amber-500">
+                    <p class="text-xs font-bold text-slate-500 uppercase mb-2">วิสาหกิจมาตรฐาน</p>
+                    <h3 class="text-2xl font-black text-white">452</h3>
+                    <p class="text-[10px] text-amber-400 mt-1">ได้รับการรับรองแล้ว</p>
+                </div>
+                <div class="glass p-6 rounded-3xl border-l-4 border-purple-500">
+                    <p class="text-xs font-bold text-slate-500 uppercase mb-2">งบส่งเสริมชุมชน</p>
+                    <h3 class="text-2xl font-black text-white">4.2B</h3>
+                    <p class="text-[10px] text-purple-400 mt-1">ล้านบาท (กองทุนปี 68)</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass p-8 rounded-[2.5rem]">
+                    <h4 class="font-bold text-white mb-6 flex items-center italic">
+                        <span class="mr-2">📊</span> สถิติจำแนกตามเกณฑ์วินิจฉัยใหม่
+                    </h4>
+                    <div class="h-64 flex justify-center">
+                        <canvas id="disabilityChart"></canvas>
+                    </div>
+                </div>
+                <div class="glass p-8 rounded-[2.5rem]">
+                    <h4 class="font-bold text-white mb-6 flex items-center italic">
+                        <span class="mr-2">📈</span> มูลค่าการหักลดหย่อนภาษีสะสม
+                    </h4>
+                    <div class="h-64 flex justify-center">
+                        <canvas id="taxTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: Business -->
+        <section id="tab-business" class="tab-content space-y-8">
+            <div class="glass p-10 rounded-[2.5rem]">
+                <h2 class="text-2xl font-bold text-white mb-4 italic">สิทธิประโยชน์สำหรับสถานประกอบการ</h2>
+                <p class="text-slate-400 mb-8 leading-relaxed">การจ้างงานคนพิการตามมาตรา 33 หรือการให้สิทธิประโยชน์ตามมาตรา 35 ช่วยส่งเสริมภาพลักษณ์ด้าน ESG ขององค์กรและลดภาระทางภาษีอย่างมีประสิทธิภาพ</p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-slate-900/40 p-6 rounded-2xl border border-white/5">
+                        <h4 class="text-neon-green font-bold mb-3 flex items-center">
+                            <span class="mr-2">🏢</span> มาตรา 33: จ้างงานคนพิการ
+                        </h4>
+                        <ul class="text-xs text-slate-400 space-y-2 list-disc list-inside">
+                            <li>ยกเว้นภาษีเงินได้นิติบุคคลร้อยละ 100 ของค่าจ้าง</li>
+                            <li>สร้างความหลากหลายในองค์กร (DEI)</li>
+                            <li>ใช้ทักษะความสามารถเฉพาะด้านของคนพิการ</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-900/40 p-6 rounded-2xl border border-white/5">
+                        <h4 class="text-blue-400 font-bold mb-3 flex items-center">
+                            <span class="mr-2">🤝</span> มาตรา 35: สนับสนุนชุมชน
+                        </h4>
+                        <ul class="text-xs text-slate-400 space-y-2 list-disc list-inside">
+                            <li>การให้สัมปทานหรือจัดสถานที่จำหน่ายสินค้า</li>
+                            <li>การจ้างเหมาบริการหรือฝึกงาน</li>
+                            <li>ช่วยเหลือคนพิการที่ไม่พร้อมเข้าสู่ระบบโรงงาน</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: Calculator -->
+        <section id="tab-calculator" class="tab-content space-y-8">
+            <div class="glass p-10 rounded-[2.5rem] max-w-4xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-black text-white">ESG Tax Calculator 200%</h2>
+                    <p class="text-slate-400 mt-2">คำนวณสิทธิประโยชน์ทางภาษีตามมาตรา 33 และ 35</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-400 mb-2">จำนวนพนักงานทั้งหมดในบริษัท</label>
+                            <input type="number" id="totalEmp" value="200" class="w-full px-4 py-3 rounded-xl input-glass focus:ring-2 ring-green-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-400 mb-2">จำนวนคนพิการที่จ้าง (หรือสนับสนุน ม.35)</label>
+                            <input type="number" id="pwdEmp" value="2" class="w-full px-4 py-3 rounded-xl input-glass focus:ring-2 ring-green-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-400 mb-2">เงินเดือน/งบสนับสนุนต่อคน (ต่อปี)</label>
+                            <input type="number" id="salary" value="114240" class="w-full px-4 py-3 rounded-xl input-glass focus:ring-2 ring-green-500 outline-none transition">
+                        </div>
+                        <button onclick="calculateTax()" class="w-full bg-neon-green text-white py-4 rounded-xl font-bold hover:scale-105 transition shadow-lg">คำนวณเดี๋ยวนี้</button>
+                    </div>
+                    <div class="bg-slate-900/50 p-8 rounded-3xl border border-white/5 flex flex-col justify-center text-center">
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mb-2">ยอดลดหย่อนภาษีที่บริษัทได้รับ</p>
+                        <h3 id="taxResult" class="text-5xl font-black text-neon-green mb-4">฿456,960</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed italic">
+                            *บริษัทสามารถนำค่าใช้จ่ายในการจ้างงาน/สนับสนุน <br>มาหักเป็นรายจ่ายในการคำนวณกำไรสุทธิได้ 2 เท่า
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: Community -->
+        <section id="tab-community" class="tab-content space-y-8">
+            <div class="flex justify-between items-end mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-white">Success Stories</h2>
+                    <p class="text-slate-400">องค์กรและชุมชนตัวอย่างที่ขับเคลื่อนด้วยนวัตกรรม</p>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass overflow-hidden rounded-[2.5rem] flex flex-col md:flex-row">
+                    <div class="md:w-1/3 bg-green-500/20 flex items-center justify-center p-8">
+                        <span class="text-6xl italic font-black text-green-400">01</span>
+                    </div>
+                    <div class="p-8 md:w-2/3">
+                        <span class="bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-[10px] font-bold uppercase mb-4 inline-block tracking-tighter">Certified 2568</span>
+                        <h4 class="text-xl font-bold text-white mb-2 italic underline decoration-green-500/50">กลุ่มวิสาหกิจ Green Wheel</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-4">กลุ่มซ่อมรถเข็นไฟฟ้าโดยคนพิการ ได้รับทุนอุดหนุนจากกองทุน 1.2 ล้านบาท เพื่อขยายสาขาใน 5 จังหวัด</p>
+                        <a href="#" class="text-xs text-neon-green font-bold">อ่านกรณีศึกษาเพิ่มเติม →</a>
+                    </div>
+                </div>
+                <div class="glass overflow-hidden rounded-[2.5rem] flex flex-col md:flex-row">
+                    <div class="md:w-1/3 bg-blue-500/20 flex items-center justify-center p-8">
+                        <span class="text-6xl italic font-black text-blue-400">02</span>
+                    </div>
+                    <div class="p-8 md:w-2/3">
+                        <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-[10px] font-bold uppercase mb-4 inline-block tracking-tighter">IoT Innovation</span>
+                        <h4 class="text-xl font-bold text-white mb-2 italic underline decoration-blue-500/50">Platform "พึ่งพา"</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-4">ระบบจัดหางานสำหรับคนพิการรุนแรง (ม.35) ช่วยให้คนพิการในชนบทมีรายได้สม่ำเสมอเฉลี่ย 9,000 บ./เดือน</p>
+                        <a href="#" class="text-xs text-blue-400 font-bold">ดูรายละเอียดแพลตฟอร์ม →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: Regulations -->
+        <section id="tab-regulations" class="tab-content space-y-8">
+            <div class="glass p-10 rounded-[2.5rem]">
+                <h2 class="text-2xl font-bold text-white mb-8 border-b border-slate-700 pb-4">สาระสำคัญระเบียบ พม. 2568</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-neon-green/20 rounded-full flex items-center justify-center text-neon-green flex-shrink-0">✓</div>
+                            <div>
+                                <h4 class="font-bold text-white italic underline">เกณฑ์ปัจจัยทางสังคม</h4>
+                                <p class="text-sm text-slate-500">พิจารณาจากสิ่งแวดล้อมที่ขัดขวางการใช้ชีวิต (เช่น ขาดขนส่งสาธารณะที่รองรับ) มากกว่าแค่ความพิการทางกาย</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center text-blue-400 flex-shrink-0">✓</div>
+                            <div>
+                                <h4 class="font-bold text-white italic underline">การออกบัตรโดยประจักษ์</h4>
+                                <p class="text-sm text-slate-500">กรณีเห็นชัดเจน ไม่ต้องใช้ใบรับรองแพทย์ เจ้าหน้าที่สามารถอนุมัติได้ทันทีเพื่อลดภาระการเดินทาง</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-amber-500/20 rounded-full flex items-center justify-center text-amber-400 flex-shrink-0">✓</div>
+                            <div>
+                                <h4 class="font-bold text-white italic underline">มาตรฐานองค์กรบริการ</h4>
+                                <p class="text-sm text-slate-500">องค์กรชุมชนที่ได้รับรองมาตรฐาน สามารถยื่นขอเงินอุดหนุนรายปีเพื่อจัดบริการคนพิการในพื้นที่ได้เอง</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 flex-shrink-0">✓</div>
+                            <div>
+                                <h4 class="font-bold text-white italic underline">Digital Identity</h4>
+                                <p class="text-sm text-slate-500">เชื่อมโยงฐานข้อมูลกับแอปฯ "ทางรัฐ" และ "พม. Smart" เพื่อรับสวัสดิการได้โดยไม่ต้องพกบัตรแข็ง</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Tab Switching
+        function switchTab(tabId) {
+            // ซ่อนคอนเทนต์ทั้งหมด
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            
+            // ลบสถานะ Active ของปุ่มทั้งหมด
+            document.querySelectorAll('.sidebar-link').forEach(btn => {
+                if (btn) btn.classList.remove('active');
+            });
+            
+            // แสดงคอนเทนต์และปุ่มที่ถูกเลือก
+            const targetTab = document.getElementById('tab-' + tabId);
+            const targetBtn = document.getElementById('btn-' + tabId);
+            
+            if (targetTab) targetTab.classList.add('active');
+            if (targetBtn) targetBtn.classList.add('active');
+
+            const titles = {
+                'overview': 'ภาพรวมการพัฒนาคุณภาพชีวิต',
+                'business': 'ส่วนธุรกิจและการลดหย่อนภาษี',
+                'calculator': 'เครื่องมือคำนวณสิทธิทางภาษี',
+                'community': 'ศูนย์นวัตกรรมและเรื่องราวความสำเร็จ',
+                'regulations': 'ระเบียบและกฎหมายใหม่ 2568'
+            };
+            if (titles[tabId]) {
+                document.getElementById('page-title').innerText = titles[tabId];
+            }
+        }
+
+        // Tax Calculation Logic
+        function calculateTax() {
+            const pwd = document.getElementById('pwdEmp').value;
+            const salary = document.getElementById('salary').value;
+            // สิทธิลดหย่อน 2 เท่า (200%)
+            const result = pwd * salary * 2;
+            document.getElementById('taxResult').innerText = "฿" + result.toLocaleString();
+        }
+
+        // Charts
+        window.onload = function() {
+            // Chart 1: Disability Types
+            const ctx1 = document.getElementById('disabilityChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: ['ทางกาย', 'การได้ยิน', 'การมองเห็น', 'สติปัญญา', 'ออทิสติก', 'อื่นๆ'],
+                    datasets: [{
+                        data: [50, 12, 8, 15, 10, 5],
+                        backgroundColor: ['#22c55e', '#3b82f6', '#f59e0b', '#a855f7', '#ec4899', '#64748b'],
+                        borderWidth: 0,
+                        hoverOffset: 20
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { color: '#94a3b8', font: { size: 11, family: 'Sarabun' } } }
+                    }
+                }
+            });
+
+            // Chart 2: Tax Trend
+            const ctx2 = document.getElementById('taxTrendChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['2564', '2565', '2566', '2567', '2568 (Proj)'],
+                    datasets: [{
+                        label: 'มูลค่าการลดหย่อน (ล้านบาท)',
+                        data: [2100, 2450, 2800, 3100, 4200],
+                        backgroundColor: '#3b82f6',
+                        borderRadius: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b' } },
+                        x: { grid: { display: false }, ticks: { color: '#64748b' } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        };
+    </script>
+</body>
+</html>

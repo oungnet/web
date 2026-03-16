@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech & Green Partnership 2025 - บูรณาการนวัตกรรมเพื่อความเท่าเทียม</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Sarabun', sans-serif; background-color: #020617; scroll-behavior: smooth; }
+        .tech-green { color: #4ade80; }
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+        }
+        .btn-primary { 
+            background: linear-gradient(90deg, #22c55e 0%, #10b981 100%); 
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #4ade80;
+        }
+        .nav-link.active { color: #4ade80; border-bottom: 2px solid #4ade80; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .glow-border:hover { border-color: rgba(74, 222, 128, 0.5); box-shadow: 0 0 20px rgba(74, 222, 128, 0.1); }
+        
+        /* Floating Action Button Styling */
+        .fab-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body class="text-slate-300">
+
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+        <a href="#" class="w-14 h-14 bg-green-600 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all group relative">
+            <span class="text-white text-2xl">💬</span>
+            <span class="absolute right-16 bg-white text-slate-900 px-3 py-1 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">คุยผ่าน LINE OA</span>
+        </a>
+        <a href="tel:1479" class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all group relative">
+            <span class="text-white text-2xl">📞</span>
+            <span class="absolute right-16 bg-white text-slate-900 px-3 py-1 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">สายด่วน พม. 1479</span>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-slate-950/90 backdrop-blur-xl border-b border-slate-800 sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center text-white font-black shadow-lg shadow-green-500/20">G</div>
+                <div>
+                    <span class="text-lg font-bold text-white tracking-tight uppercase block leading-none">TechGreen</span>
+                    <span class="text-[10px] text-green-500 font-bold tracking-[0.2em] uppercase">Partnership 2025</span>
+                </div>
+            </div>
+            <div class="flex space-x-6 text-xs font-bold uppercase tracking-widest">
+                <button onclick="switchTab('business')" id="nav-business" class="nav-link active py-2 transition">สำหรับผู้ประกอบการ</button>
+                <button onclick="switchTab('community')" id="nav-community" class="nav-link py-2 transition">สำหรับชุมชน/เกษตรกร</button>
+                <button onclick="switchTab('tech')" id="nav-tech" class="nav-link py-2 transition">นวัตกรรมสีเขียว</button>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#contact" class="btn-primary text-white px-6 py-2 rounded-full text-xs font-bold transition-all hover:scale-105">
+                    ลงทะเบียนพาร์ทเนอร์
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-24 pb-12 px-6 overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]"></div>
+        </div>
+        <div class="container mx-auto text-center relative z-10">
+            <span class="inline-block border border-green-500/30 text-green-400 px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] mb-8 bg-green-500/5">Integrated ESG Platform v2.0</span>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                เชื่อมต่อธุรกิจ <span class="tech-green">พลังงาน</span> และ <span class="text-blue-400">โอกาส</span>
+            </h1>
+            <p class="text-slate-400 max-w-2xl mx-auto text-lg mb-10">
+                รวมศูนย์ข้อมูลสิทธิประโยชน์ มาตรฐานการรับรอง และนวัตกรรมสีเขียวเพื่อสังคม พร้อมขับเคลื่อนตามระเบียบใหม่ พ.ศ. 2568
+            </p>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <button onclick="switchTab('business')" class="btn-secondary text-white px-8 py-3 rounded-xl text-sm font-bold flex items-center">
+                    <span class="mr-2">📊</span> ดูสิทธิลดหย่อนภาษี
+                </button>
+                <button onclick="switchTab('tech')" class="btn-secondary text-white px-8 py-3 rounded-xl text-sm font-bold flex items-center">
+                    <span class="mr-2">⚡</span> ดูโครงการนวัตกรรม
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tab 1: Business Section -->
+    <main id="tab-business" class="tab-content active container mx-auto px-6 py-12">
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="md:col-span-2 space-y-8">
+                <div class="glass-card p-10 rounded-[2.5rem] glow-border">
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 class="text-3xl font-bold text-white flex items-center">
+                            <span class="mr-4">💼</span> สิทธิประโยชน์สำหรับผู้ประกอบการ
+                        </h2>
+                        <span class="bg-green-500/20 text-green-400 text-[10px] px-3 py-1 rounded-full font-bold">Update 2568</span>
+                    </div>
+                    <p class="mb-8 text-slate-400 leading-relaxed">ภายใต้ระเบียบใหม่ ธุรกิจสามารถใช้ มาตรา 35 สนับสนุน "หน่วยบริการ" ที่ผ่านการรับรองเพื่อรับสิทธิหักภาษี 2 เท่า พร้อมสร้างคะแนน ESG</p>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="bg-slate-900/50 p-6 rounded-2xl border border-white/5 hover:border-green-500/30 transition">
+                            <h4 class="font-bold text-green-400 mb-2">มาตรา 33 & 35 บูรณาการ</h4>
+                            <p class="text-sm text-slate-500 mb-4">หักลดหย่อนภาษีได้ 200% จากค่าใช้จ่ายจริง</p>
+                            <button class="text-xs font-bold text-white bg-slate-800 px-4 py-2 rounded-lg hover:bg-green-600 transition">รายละเอียดมาตรา</button>
+                        </div>
+                        <div class="bg-slate-900/50 p-6 rounded-2xl border border-white/5 hover:border-blue-500/30 transition">
+                            <h4 class="font-bold text-blue-400 mb-2">ESG & Carbon Credit</h4>
+                            <p class="text-sm text-slate-500 mb-4">รายงานความยั่งยืนด้วยตัวชี้วัดที่เป็นรูปธรรม</p>
+                            <button class="text-xs font-bold text-white bg-slate-800 px-4 py-2 rounded-lg hover:bg-blue-600 transition">ตัวชี้วัด ESG</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-8">
+                <div class="glass-card p-8 rounded-[2rem] sticky top-32">
+                    <h4 class="font-bold text-white mb-6">ศูนย์รวมเอกสาร (Download)</h4>
+                    <div class="space-y-3">
+                        <button class="w-full text-left p-4 rounded-xl btn-secondary transition flex items-center justify-between group">
+                            <span class="text-sm">พก. 2568: ระเบียบใหม่</span>
+                            <span class="opacity-50 group-hover:opacity-100">📄</span>
+                        </button>
+                        <button class="w-full text-left p-4 rounded-xl btn-secondary transition flex items-center justify-between group">
+                            <span class="text-sm">คู่มือการรับสิทธิภาษี 2568</span>
+                            <span class="opacity-50 group-hover:opacity-100">📊</span>
+                        </button>
+                        <button class="w-full text-left p-4 rounded-xl btn-secondary transition flex items-center justify-between group text-green-400 border-green-500/20">
+                            <span class="text-sm font-bold">Checklist การขอยกเว้นภาษี</span>
+                            <span class="opacity-100">✅</span>
+                        </button>
+                    </div>
+                    <hr class="my-8 border-slate-800">
+                    <p class="text-xs text-slate-500 mb-4 font-bold uppercase text-center tracking-widest">ดำเนินการจ้างงาน</p>
+                    <button class="w-full btn-primary py-4 rounded-xl font-bold text-white text-sm hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] transition">จ้างงานผ่านระบบออนไลน์</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Tab 2: Community Section -->
+    <main id="tab-community" class="tab-content container mx-auto px-6 py-12">
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+                <h2 class="text-4xl font-bold text-white mb-6 leading-tight">ยกระดับสู่ <span class="tech-green">หน่วยบริการมาตรฐาน</span></h2>
+                <p class="text-slate-400 text-lg leading-relaxed mb-10">ระเบียบปี 2568 เปิดโอกาสให้วิสาหกิจชุมชนที่ได้รับ "การรับรองมาตรฐาน" สามารถขอรับงบอุดหนุนเพื่อจัดบริการให้คนพิการได้โดยตรง</p>
+                <div class="grid gap-4 mb-8">
+                    <button class="flex items-center justify-between p-6 glass-card rounded-2xl hover:bg-green-500/10 transition group">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-3xl">📝</span>
+                            <div class="text-left">
+                                <p class="font-bold text-white">ขั้นตอนการจดทะเบียน</p>
+                                <p class="text-xs text-slate-500">สำหรับองค์กร/กลุ่มเกษตรกร</p>
+                            </div>
+                        </div>
+                        <span class="group-hover:translate-x-2 transition">➜</span>
+                    </button>
+                    <button class="flex items-center justify-between p-6 glass-card rounded-2xl hover:bg-blue-500/10 transition group">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-3xl">💰</span>
+                            <div class="text-left">
+                                <p class="font-bold text-white">แหล่งงบประมาณสนับสนุน</p>
+                                <p class="text-xs text-slate-500">กองทุนส่งเสริมและพัฒนาคุณภาพชีวิต</p>
+                            </div>
+                        </div>
+                        <span class="group-hover:translate-x-2 transition">➜</span>
+                    </button>
+                </div>
+            </div>
+            <div class="glass-card p-10 rounded-[3rem] border-blue-500/20">
+                <h3 class="text-2xl font-bold text-white mb-6">Status Check</h3>
+                <div class="space-y-6">
+                    <div class="bg-slate-900/80 p-6 rounded-2xl">
+                        <p class="text-xs text-slate-500 uppercase font-bold mb-2">กลุ่มเป้าหมายปี 2568</p>
+                        <p class="text-xl font-bold text-white">2,100,000+ <span class="text-sm font-normal text-slate-400">คนทั่วประเทศ</span></p>
+                    </div>
+                    <div class="flex gap-4">
+                        <button class="flex-grow btn-primary py-4 rounded-xl font-bold">ค้นหาคนพิการในพื้นที่</button>
+                        <button class="btn-secondary px-6 rounded-xl">📍</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Tab 3: Tech Section -->
+    <main id="tab-tech" class="tab-content container mx-auto px-6 py-12">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-white mb-4 italic">Next-Gen Green Infrastructure</h2>
+            <p class="text-slate-500">เทคโนโลยีที่เราพร้อมถ่ายทอดและติดตั้งในชุมชนผ่านงบสนับสนุนมาตรา 35</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass-card overflow-hidden rounded-[2.5rem] group hover:border-green-500/50 transition-all">
+                <div class="h-48 bg-slate-900 flex items-center justify-center text-6xl group-hover:scale-110 transition">🔋</div>
+                <div class="p-8">
+                    <h4 class="text-xl font-bold text-white mb-2 italic">Micro-Grid Ops</h4>
+                    <p class="text-sm text-slate-400 mb-6">ระบบจัดการไฟโซลาร์เซลล์ ควบคุมได้ผ่านสมาร์ทโฟน เหมาะสำหรับผู้พิการทางร่างกาย</p>
+                    <button class="w-full py-3 bg-white/5 border border-white/10 rounded-xl text-xs font-bold hover:bg-white/10 transition">ดูสเปคอุปกรณ์</button>
+                </div>
+            </div>
+            <div class="glass-card overflow-hidden rounded-[2.5rem] group hover:border-green-500/50 transition-all">
+                <div class="h-48 bg-slate-900 flex items-center justify-center text-6xl group-hover:scale-110 transition">🛰️</div>
+                <div class="p-8">
+                    <h4 class="text-xl font-bold text-white mb-2 italic">AI Agri-Sensors</h4>
+                    <p class="text-sm text-slate-400 mb-6">เซนเซอร์วิเคราะห์สารอาหารในดินด้วย AI ลดภาระการลงพื้นที่สำรวจด้วยตัวเอง</p>
+                    <button class="w-full py-3 bg-white/5 border border-white/10 rounded-xl text-xs font-bold hover:bg-white/10 transition">คู่มือการติดตั้ง</button>
+                </div>
+            </div>
+            <div class="glass-card overflow-hidden rounded-[2.5rem] group hover:border-green-500/50 transition-all">
+                <div class="h-48 bg-slate-900 flex items-center justify-center text-6xl group-hover:scale-110 transition">📦</div>
+                <div class="p-8">
+                    <h4 class="text-xl font-bold text-white mb-2 italic">Circular Logistic</h4>
+                    <p class="text-sm text-slate-400 mb-6">ระบบจัดการสต็อกและขนส่งสินค้าชุมชน สอดคล้องกับมาตรฐาน ESG สากล</p>
+                    <button class="w-full py-3 bg-white/5 border border-white/10 rounded-xl text-xs font-bold hover:bg-white/10 transition">โซลูชันสำหรับธุรกิจ</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 bg-slate-950 border-t border-slate-900 text-center">
+        <div class="container mx-auto">
+            <div class="flex justify-center space-x-6 mb-8">
+                <button class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:text-green-500 transition border border-slate-800">FB</button>
+                <button class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:text-green-500 transition border border-slate-800">LI</button>
+                <button class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:text-green-500 transition border border-slate-800">YT</button>
+            </div>
+            <p class="text-xs text-slate-600 font-bold uppercase tracking-[0.3em]">TechGreen Integrated Platform x DEP Thailand 2025</p>
+            <p class="text-[10px] text-slate-700 mt-4 leading-relaxed">ข้อมูลอ้างอิงจากระเบียบคณะกรรมการส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการแห่งชาติ พ.ศ. 2568<br>ปรับปรุงข้อมูลล่าสุดเมื่อ มีนาคม 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.getElementById('nav-' + tabId).classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

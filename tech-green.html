@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech & Green Partnership 2025 - นวัตกรรมเพื่อความเท่าเทียม</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Sarabun', sans-serif; background-color: #020617; } /* Deep Dark Navy Background */
+        .tech-green { color: #4ade80; } /* Neon Green */
+        .tech-blue { color: #38bdf8; } /* Cyber Blue */
+        .green-gradient { background: linear-gradient(135deg, #064e3b 0%, #020617 100%); }
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+        .btn-green { 
+            background: linear-gradient(90deg, #22c55e 0%, #10b981 100%); 
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+        }
+        .card-hover:hover { 
+            border-color: #4ade80;
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.1);
+            transform: translateY(-5px);
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="text-slate-300">
+
+    <!-- Navigation -->
+    <nav class="bg-slate-950/80 backdrop-blur-lg border-b border-slate-800 sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center text-white font-bold">G</div>
+                <span class="text-xl font-bold text-white tracking-tight uppercase">Tech<span class="tech-green">Green</span> 2025</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-xs font-semibold uppercase tracking-widest">
+                <a href="#vision" class="hover:text-green-400 transition">วิสัยทัศน์</a>
+                <a href="#agri-tech" class="hover:text-green-400 transition">นวัตกรรมเกษตร</a>
+                <a href="#benefits" class="hover:text-green-400 transition">สิทธิประโยชน์</a>
+            </div>
+            <a href="#contact" class="btn-green text-white px-6 py-2 rounded-full text-sm font-bold transition">
+                Connect Now
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative py-24 px-6 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]"></div>
+        </div>
+        
+        <div class="container mx-auto flex flex-col md:flex-row items-center relative z-10">
+            <div class="md:w-1/2 text-left mb-12 md:mb-0">
+                <span class="inline-block border border-green-500/30 text-green-400 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-[0.2em] mb-6">Sustainable Innovation</span>
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
+                    ขับเคลื่อนธุรกิจด้วย <br><span class="tech-green">พลังงานสะอาด</span> <br>และหัวใจที่เท่าเทียม
+                </h1>
+                <p class="text-lg text-slate-400 mb-10 max-w-lg leading-relaxed">
+                    ผสานเทคโนโลยีสมัยใหม่เข้ากับศักยภาพของผู้พิการ เพื่อสร้างสรรค์นวัตกรรมสีเขียวตามระเบียบใหม่ปี 2568 สร้างอนาคตที่ยั่งยืนร่วมกับวิสาหกิจชุมชน
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="btn-green text-white px-8 py-3 rounded-xl font-bold shadow-xl transition">ร่วมเป็นพาร์ทเนอร์</a>
+                    <a href="#rules" class="bg-slate-800 text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-700 transition">Whitepaper 2025</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="glass-card p-2 rounded-[2.5rem] relative">
+                    <div class="bg-slate-900 rounded-[2.2rem] p-10 shadow-inner">
+                        <div class="text-6xl mb-6">🔋</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Green Energy <br>for Local Community</h3>
+                        <div class="flex space-x-2">
+                            <div class="h-1 w-12 bg-green-500 rounded-full"></div>
+                            <div class="h-1 w-4 bg-slate-700 rounded-full"></div>
+                            <div class="h-1 w-4 bg-slate-700 rounded-full"></div>
+                        </div>
+                        <p class="mt-6 text-slate-500 text-sm">การบริหารจัดการพลังงานชุมชน โดยฝีมือผู้พิการที่ผ่านการอบรมทักษะนวัตกรรม</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Agri-Tech & Renewable Energy Section -->
+    <section id="agri-tech" class="py-24 container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 grid grid-cols-2 gap-4">
+                <div class="glass-card p-6 rounded-3xl card-hover">
+                    <div class="text-3xl mb-4">🛰️</div>
+                    <h4 class="font-bold text-white mb-2">Smart IoT</h4>
+                    <p class="text-xs text-slate-500">ระบบเซนเซอร์การเกษตรที่ควบคุมโดยผู้พิการ</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl card-hover mt-8">
+                    <div class="text-3xl mb-4">☀️</div>
+                    <h4 class="font-bold text-white mb-2">Solar Farm</h4>
+                    <p class="text-xs text-slate-500">โครงการติดตั้งแผงโซลาร์เซลล์ฝีมือช่างชุมชน</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl card-hover">
+                    <div class="text-3xl mb-4">♻️</div>
+                    <h4 class="font-bold text-white mb-2">Biomass</h4>
+                    <p class="text-xs text-slate-500">การแปรรูปขยะเกษตรเป็นพลังงานหมุนเวียน</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl card-hover mt-8">
+                    <div class="text-3xl mb-4">💧</div>
+                    <h4 class="font-bold text-white mb-2">Hydro Tech</h4>
+                    <p class="text-xs text-slate-500">ระบบจัดการน้ำอัจฉริยะเพื่อการเกษตรยั่งยืน</p>
+                </div>
+            </div>
+            <div class="order-1 md:order-2">
+                <span class="text-green-500 font-bold tracking-widest text-xs uppercase">Tech & Agriculture</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-4 mb-6 leading-tight">นวัตกรรมเกษตรสีเขียว <br>สนับสนุนโดยพลังของชุมชน</h2>
+                <p class="text-lg text-slate-400 mb-8 leading-relaxed">
+                    เราเปลี่ยนภาคเกษตรกรรมให้เป็นศูนย์กลางเทคโนโลยี โดยมีผู้พิการเป็น "Tech-Operators" ดูแลระบบพลังงานทดแทนและฟาร์มอัจฉริยะ สร้างมูลค่าเพิ่มให้ธุรกิจของคุณผ่านแนวคิด **Carbon Neutrality**
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-center text-slate-300">
+                        <span class="w-6 h-6 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mr-3 text-xs">✔</span>
+                        การสนับสนุนงบด้านเทคโนโลยี (มาตรา 35)
+                    </li>
+                    <li class="flex items-center text-slate-300">
+                        <span class="w-6 h-6 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mr-3 text-xs">✔</span>
+                        สิทธิประโยชน์ทางภาษีจากโครงการสีเขียว
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Incentives Section -->
+    <section id="benefits" class="py-24 bg-slate-900/50 border-y border-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">สิทธิประโยชน์ระดับพรีเมียมสำหรับพันธมิตร</h2>
+                <p class="text-slate-500">ร่วมขับเคลื่อนนวัตกรรมสังคม พร้อมรับข้อเสนอทางกฎหมายที่คุ้มค่าที่สุด</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-10 rounded-[2rem] card-hover border-t-4 border-t-green-500">
+                    <div class="text-4xl mb-6">💎</div>
+                    <h3 class="text-xl font-bold text-white mb-4">100% Tax Credit</h3>
+                    <p class="text-slate-400">หักลดหย่อนภาษีได้เต็มจำนวนจากการสนับสนุนอุปกรณ์เทคโนโลยีและพลังงานสะอาดให้ผู้พิการในชุมชน</p>
+                </div>
+                <div class="glass-card p-10 rounded-[2rem] card-hover border-t-4 border-t-blue-500">
+                    <div class="text-4xl mb-6">🌐</div>
+                    <h3 class="text-xl font-bold text-white mb-4">Digital Branding</h3>
+                    <p class="text-slate-400">ยกระดับแบรนด์ด้วยภาพลักษณ์ "Tech-Social Responsible" ที่เป็นผู้นำด้านนวัตกรรมเพื่อสังคม</p>
+                </div>
+                <div class="glass-card p-10 rounded-[2rem] card-hover border-t-4 border-t-purple-500">
+                    <div class="text-4xl mb-6">📊</div>
+                    <h3 class="text-xl font-bold text-white mb-4">ESG Compliance</h3>
+                    <p class="text-slate-400">ตอบโจทย์เกณฑ์มาตรฐานความยั่งยืนระดับสากล สำหรับบริษัทจดทะเบียนในตลาดหลักทรัพย์</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="rules" class="py-24 container mx-auto px-6 text-center">
+        <div class="glass-card p-12 rounded-[3rem] border-dashed border-slate-700">
+            <h2 class="text-3xl font-bold text-white mb-6">Technical Documentation</h2>
+            <p class="text-slate-400 mb-10 max-w-xl mx-auto">ดาวน์โหลดระเบียบและคู่มือการสนับสนุนผู้พิการ ปี พ.ศ.2568</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://dep.go.th" class="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl flex items-center justify-center transition">
+                    <span class="mr-3">📁</span> PDF: ระเบียบ 2568
+                </a>
+                <a href="https://dep.go.th" class="bg-green-600/10 border border-green-500/50 text-green-400 hover:bg-green-600 hover:text-white px-8 py-4 rounded-xl flex items-center justify-center transition">
+                    <span class="mr-3">⚡</span> Guide: Smart Agri
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-16 px-6 border-t border-slate-900">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-8 md:mb-0">
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-6 h-6 bg-green-500 rounded flex items-center justify-center text-white font-bold text-xs">G</div>
+                    <span class="font-bold text-white uppercase tracking-widest text-sm">TechGreen Partnership</span>
+                </div>
+                <p class="text-xs text-slate-500">© 2025 Innovation for Equality. All rights reserved.</p>
+            </div>
+            <div class="flex space-x-12 text-xs font-bold uppercase tracking-widest text-slate-500">
+                <a href="#" class="hover:text-green-500 transition">Privacy</a>
+                <a href="#" class="hover:text-green-500 transition">Security</a>
+                <a href="#" class="hover:text-green-500 transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
